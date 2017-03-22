@@ -1,0 +1,11 @@
+C:\Fast_Kyrs\Kyrs\Kyrs\bin\Debug\Kyrs.exe.config
+C:\Fast_Kyrs\Kyrs\Kyrs\bin\Debug\Kyrs.exe
+C:\Fast_Kyrs\Kyrs\Kyrs\bin\Debug\Kyrs.pdb
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.csprojResolveAssemblyReference.cache
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.Login_Form.resources
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.Properties.Resources.resources
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.csproj.GenerateResource.Cache
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.exe
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.pdb
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.Registr_Form.resources
+C:\Fast_Kyrs\Kyrs\Kyrs\obj\Debug\Kyrs.Users_Form.resources
