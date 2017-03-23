@@ -46,12 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Form.Designer.cs">
+      <DependentUpon>Admin_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB_Work.cs" />
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_Classes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Classes.Designer.cs">
+      <DependentUpon>New_Classes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_Hotel_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Hotel_Form.Designer.cs">
+      <DependentUpon>New_Hotel_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="New_Room_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Room_Form.Designer.cs">
+      <DependentUpon>New_Room_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +91,20 @@
     <Compile Include="Users_Form.Designer.cs">
       <DependentUpon>Users_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin_Form.resx">
+      <DependentUpon>Admin_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Classes.resx">
+      <DependentUpon>New_Classes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Hotel_Form.resx">
+      <DependentUpon>New_Hotel_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Room_Form.resx">
+      <DependentUpon>New_Room_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

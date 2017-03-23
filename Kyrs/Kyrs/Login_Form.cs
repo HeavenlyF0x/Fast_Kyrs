@@ -47,9 +47,19 @@ namespace Kyrs
         {
             //if(АУТЕНТИФИКАЦИЯ)
             //then
-            var UsersForm = new Users_Form(wdb);
-            this.Visible = false;
-            UsersForm.ShowDialog();
+            wdb.GetLogin(E_Login.Text, E_Password.Text);
+            if (wdb.ActivUser != 1)
+            {
+                var UsersForm = new Users_Form(wdb);
+                this.Visible = false;
+                UsersForm.ShowDialog();
+            }
+            else
+            {
+                var AdminForm = new Admin_Form(wdb);
+                this.Visible = false;
+                AdminForm.ShowDialog();
+            }
             //else
             //БРО_ЧТО_ТО_НЕ_ТО_ТЫ_ВВОДИШЬ!
         }

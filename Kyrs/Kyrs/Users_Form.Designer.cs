@@ -56,6 +56,7 @@
             this.BS_Rooms.Name = "BS_Rooms";
             this.BS_Rooms.Size = new System.Drawing.Size(107, 22);
             this.BS_Rooms.Text = "Отели и комнаты";
+            this.BS_Rooms.Click += new System.EventHandler(this.BS_Rooms_Click);
             // 
             // BS_Reservations
             // 
@@ -65,6 +66,7 @@
             this.BS_Reservations.Name = "BS_Reservations";
             this.BS_Reservations.Size = new System.Drawing.Size(175, 22);
             this.BS_Reservations.Text = "Зарезервированные комнаты";
+            this.BS_Reservations.Click += new System.EventHandler(this.BS_Reservations_Click);
             // 
             // dataGridView1
             // 
@@ -84,6 +86,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "Users_Form";
             this.Text = "Users_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Users_Form_FormClosing);
             this.Load += new System.EventHandler(this.Users_Form_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

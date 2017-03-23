@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 #region button1
 /*
@@ -103,7 +104,7 @@ public class DB_Work
         return info;
     }
 
-    public int AddHotel(String _idHotel, String _title,  String _address, int _startCount)
+    public int AddHotel(String _idHotel, String _title, String _address, int _startCount)
     {
 
         String sqlExpression = "proc_Add_Hotel";
@@ -120,7 +121,7 @@ public class DB_Work
             command.Parameters.AddWithValue("@id_hotel", _idHotel);
             command.Parameters.AddWithValue("@title", _title);
             command.Parameters.AddWithValue("@address", _address);
-            command.Parameters.AddWithValue("@starcount", _startCount);;
+            command.Parameters.AddWithValue("@starcount", _startCount); ;
             var result = command.ExecuteNonQuery();
         }
         catch (Exception _ex)
@@ -135,7 +136,7 @@ public class DB_Work
         return info;
     }
 
-    public int AddNewUser(String _idHotel, String _idRoom, int _idClass)
+    public int AddRoom(String _idHotel, String _idRoom, int _idClass)
     {
 
         String sqlExpression = "proc_Add_Room";
@@ -166,7 +167,7 @@ public class DB_Work
         return info;
     }
 
-    public int AddNewUser(String _idHotel, String _idRoom, int _idUser, String _dataIn, int _dayCount)
+    public int AddReservation(String _idHotel, String _idRoom, int _idUser, String _dataIn, int _dayCount)
     {
 
         String sqlExpression = "proc_Add_Reservation";
@@ -199,5 +200,232 @@ public class DB_Work
         return info;
     }
 
-}
+    public DataGridView FillHotel(DataGridView _dgv)
+    {
+        DataGridView dgv = _dgv;
 
+        String sqlExpression = "proc_Select_Hotels";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+
+    public int GetLogin(String _login, String _pass)
+    {
+        int i = 0;
+
+        String sqlExpression = "proc_Login";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@login", _login);
+            command.Parameters.AddWithValue("@pass", _pass);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            ActivUser = int.Parse(reader["Id_User"].ToString());
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            i = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return i;
+    }
+
+    public DataGridView FillReservation(DataGridView _dgv, int _idUser)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "proc_Select_My_Reservation";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@user", _idUser);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+
+    public ComboBox FiilBoxIdHotel(ComboBox _cb)
+    {
+        ComboBox cb = _cb;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Hotel", connection);
+            DataTable tbl = new DataTable();
+            adapter.Fill(tbl);
+            cb.DataSource = tbl;
+            cb.DisplayMember = "Id_Hotel";
+            cb.ValueMember = "id";
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return cb;
+    }
+
+    public ComboBox FillBoxClass(ComboBox _cb)
+    {
+        ComboBox cb = _cb;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Room_Classes", connection);
+            DataTable tbl = new DataTable();
+            adapter.Fill(tbl);
+            cb.DataSource = tbl;
+            cb.DisplayMember = "Id_Class";
+            cb.ValueMember = "id";
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return cb;
+    }
+
+    public DataGridView FillRoom(DataGridView _dgv)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "SELECT * FROM Room";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+
+    public DataGridView FillRoomClasses(DataGridView _dgv)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "SELECT * FROM Room_Classes";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+
+    public DataGridView FillLogins(DataGridView _dgv)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "SELECT * FROM Users_ WHERE Id_User <> 1";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+}
