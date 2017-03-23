@@ -428,4 +428,63 @@ public class DB_Work
         }
         return dgv;
     }
+
+    public DataGridView FillFree(DataGridView _dgv, String _idHotel)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "proc_Select_Free";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id_hotel", _idHotel);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+    
+    public DataGridView FillLog(DataGridView _dgv)
+    {
+        DataGridView dgv = _dgv;
+
+        String sqlExpression = "SELECT * FROM Reg_Log";
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            dgv.DataSource = ds.Tables[0];
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return dgv;
+    }
+
 }

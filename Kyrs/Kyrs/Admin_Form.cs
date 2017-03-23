@@ -78,5 +78,11 @@ namespace Kyrs
         {
             Application.Exit();
         }
+
+        private void BC_Log_Click(object sender, EventArgs e)
+        {
+            Selector = -1;
+            dataGridView1 = wdb.FillLog(dataGridView1);
+        }
     }
 }

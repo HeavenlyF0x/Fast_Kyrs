@@ -116,6 +116,7 @@
             this.BC_Log.Name = "BC_Log";
             this.BC_Log.Size = new System.Drawing.Size(31, 22);
             this.BC_Log.Text = "Лог";
+            this.BC_Log.Click += new System.EventHandler(this.BC_Log_Click);
             // 
             // dataGridView1
             // 

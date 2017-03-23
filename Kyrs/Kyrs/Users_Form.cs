@@ -45,5 +45,11 @@ namespace Kyrs
         {
             Application.Exit();
         }
+
+        private void B_Select_Click(object sender, EventArgs e)
+        {
+            int SelectedString = dataGridView1.CurrentRow.Index;
+            dataGridView1 = wdb.FillFree(dataGridView1, dataGridView1[0,SelectedString].Value.ToString());
+        }
     }
 }

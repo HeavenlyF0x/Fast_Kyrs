@@ -33,6 +33,7 @@
             this.BS_Rooms = new System.Windows.Forms.ToolStripButton();
             this.BS_Reservations = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.B_Select = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -77,11 +78,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(538, 345);
             this.dataGridView1.TabIndex = 1;
             // 
+            // B_Select
+            // 
+            this.B_Select.Location = new System.Drawing.Point(573, 48);
+            this.B_Select.Name = "B_Select";
+            this.B_Select.Size = new System.Drawing.Size(75, 23);
+            this.B_Select.TabIndex = 2;
+            this.B_Select.Text = "Выбрать";
+            this.B_Select.UseVisualStyleBackColor = true;
+            this.B_Select.Click += new System.EventHandler(this.B_Select_Click);
+            // 
             // Users_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 370);
+            this.Controls.Add(this.B_Select);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Users_Form";
@@ -102,5 +114,6 @@
         private System.Windows.Forms.ToolStripButton BS_Rooms;
         private System.Windows.Forms.ToolStripButton BS_Reservations;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button B_Select;
     }
 }
