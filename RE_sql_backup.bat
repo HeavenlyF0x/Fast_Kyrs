@@ -1,0 +1,1 @@
+sqlcmd -S TPUKCTEP -d HotelsDB -Q re_backup
