@@ -31,23 +31,31 @@ namespace Kyrs
         {
             Selector = 1;
             dataGridView1 = wdb.FillRoom(dataGridView1);
+            if (Selector == 3) CB_SelectUser.Visible = true;
+            else CB_SelectUser.Visible = false;
         }
 
         private void BC_Class_Click(object sender, EventArgs e)
         {
             Selector = 2;
             dataGridView1 = wdb.FillRoomClasses(dataGridView1);
+            if (Selector == 3) CB_SelectUser.Visible = true;
+            else CB_SelectUser.Visible = false;
         }
 
         private void BC_Reservation_Click(object sender, EventArgs e)
         {
             Selector = 3;
-            dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text.ToString()));
+            if (Selector == 3) CB_SelectUser.Visible = true;
+            else CB_SelectUser.Visible = false;
+            //dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text.ToString()));
         }
 
         private void BC_User_Click(object sender, EventArgs e)
         {
             Selector = 4;
+            if (Selector == 3) CB_SelectUser.Visible = true;
+            else CB_SelectUser.Visible = false;
             dataGridView1 = wdb.FillLogins(dataGridView1);
         }
 
@@ -71,18 +79,43 @@ namespace Kyrs
 
         private void CB_SelectUser_SelectedValueChanged(object sender, EventArgs e)
         {
-            dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text));
+           // dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text));
         }
 
         private void Admin_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+           // Application.Restart();
         }
 
         private void BC_Log_Click(object sender, EventArgs e)
         {
             Selector = -1;
+            if (Selector == 3) CB_SelectUser.Visible = true;
+            else CB_SelectUser.Visible = false;
             dataGridView1 = wdb.FillLog(dataGridView1);
+        }
+
+        private void Admin_Form_Load(object sender, EventArgs e)
+        {
+            CB_SelectUser = wdb.FillBoxUser(CB_SelectUser);
+        }
+
+        private void CB_SelectUser_VisibleChanged(object sender, EventArgs e)
+        {
+            if (CB_SelectUser.Visible)
+                button1.Visible = true;
+            else
+                button1.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text));
+        }
+
+        private void B_UnLogin_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

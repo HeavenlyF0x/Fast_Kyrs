@@ -39,6 +39,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.B_AddInfo = new System.Windows.Forms.Button();
             this.CB_SelectUser = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.B_UnLogin = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -146,12 +148,36 @@
             this.CB_SelectUser.TabIndex = 3;
             this.CB_SelectUser.Visible = false;
             this.CB_SelectUser.SelectedValueChanged += new System.EventHandler(this.CB_SelectUser_SelectedValueChanged);
+            this.CB_SelectUser.VisibleChanged += new System.EventHandler(this.CB_SelectUser_VisibleChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(458, 134);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // B_UnLogin
+            // 
+            this.B_UnLogin.Location = new System.Drawing.Point(458, 276);
+            this.B_UnLogin.Name = "B_UnLogin";
+            this.B_UnLogin.Size = new System.Drawing.Size(75, 23);
+            this.B_UnLogin.TabIndex = 5;
+            this.B_UnLogin.Text = "Выйти";
+            this.B_UnLogin.UseVisualStyleBackColor = true;
+            this.B_UnLogin.Click += new System.EventHandler(this.B_UnLogin_Click);
             // 
             // Admin_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 380);
+            this.Controls.Add(this.B_UnLogin);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CB_SelectUser);
             this.Controls.Add(this.B_AddInfo);
             this.Controls.Add(this.dataGridView1);
@@ -159,6 +185,7 @@
             this.Name = "Admin_Form";
             this.Text = "Admin_Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_Form_FormClosing);
+            this.Load += new System.EventHandler(this.Admin_Form_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Admin_Form_MouseClick);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -180,5 +207,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button B_AddInfo;
         private System.Windows.Forms.ComboBox CB_SelectUser;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button B_UnLogin;
     }
 }

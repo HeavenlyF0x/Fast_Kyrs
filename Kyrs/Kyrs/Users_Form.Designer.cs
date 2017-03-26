@@ -34,6 +34,7 @@
             this.BS_Reservations = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.B_Select = new System.Windows.Forms.Button();
+            this.B_UnLogin = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -88,11 +89,22 @@
             this.B_Select.UseVisualStyleBackColor = true;
             this.B_Select.Click += new System.EventHandler(this.B_Select_Click);
             // 
+            // B_UnLogin
+            // 
+            this.B_UnLogin.Location = new System.Drawing.Point(573, 335);
+            this.B_UnLogin.Name = "B_UnLogin";
+            this.B_UnLogin.Size = new System.Drawing.Size(75, 23);
+            this.B_UnLogin.TabIndex = 3;
+            this.B_UnLogin.Text = "Выйти";
+            this.B_UnLogin.UseVisualStyleBackColor = true;
+            this.B_UnLogin.Click += new System.EventHandler(this.B_UnLogin_Click);
+            // 
             // Users_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 370);
+            this.Controls.Add(this.B_UnLogin);
             this.Controls.Add(this.B_Select);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
@@ -115,5 +127,6 @@
         private System.Windows.Forms.ToolStripButton BS_Reservations;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button B_Select;
+        private System.Windows.Forms.Button B_UnLogin;
     }
 }

@@ -26,7 +26,7 @@ namespace Kyrs
         private void Users_Form_Load(object sender, EventArgs e)
         {
             dataGridView1 = wdb.FillHotel(dataGridView1);
-            
+
         }
 
         private void BS_Rooms_Click(object sender, EventArgs e)
@@ -49,7 +49,12 @@ namespace Kyrs
         private void B_Select_Click(object sender, EventArgs e)
         {
             int SelectedString = dataGridView1.CurrentRow.Index;
-            dataGridView1 = wdb.FillFree(dataGridView1, dataGridView1[0,SelectedString].Value.ToString());
+            dataGridView1 = wdb.FillFree(dataGridView1, dataGridView1[0, SelectedString].Value.ToString());
+        }
+
+        private void B_UnLogin_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

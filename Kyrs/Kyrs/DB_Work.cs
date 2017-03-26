@@ -39,7 +39,7 @@ public class DB_Work
         connectionString = @"Data Source=TPUKCTEP; Initial Catalog=HotelsDB;Integrated Security=True";
     }
 
-    public int AddNewUser(String _login, String _pass, String _lastname, String _firstname, String _patronymic, String _number)
+    public int AddNewUser(String _login, String _pass, String _lastname, String _firstname, String _patronymic, String _number)             
     {
 
         String sqlExpression = "proc_Add_User";
@@ -230,7 +230,7 @@ public class DB_Work
 
     public int GetLogin(String _login, String _pass)
     {
-        int i = 0;
+        int i = 1;
 
         String sqlExpression = "proc_Login";
 
@@ -246,7 +246,6 @@ public class DB_Work
             SqlDataReader reader = command.ExecuteReader();
 
             reader.Read();
-
             ActivUser = int.Parse(reader["Id_User"].ToString());
         }
         catch (Exception _ex)
@@ -332,6 +331,33 @@ public class DB_Work
             adapter.Fill(tbl);
             cb.DataSource = tbl;
             cb.DisplayMember = "Id_Class";
+            cb.ValueMember = "id";
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return cb;
+    }
+
+    public ComboBox FillBoxUser(ComboBox _cb)
+    {
+        ComboBox cb = _cb;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Users_", connection);
+            DataTable tbl = new DataTable();
+            adapter.Fill(tbl);
+            cb.DataSource = tbl;
+            cb.DisplayMember = "Id_User";
             cb.ValueMember = "id";
         }
         catch (Exception _ex)

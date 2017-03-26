@@ -47,7 +47,8 @@ namespace Kyrs
         {
             //if(АУТЕНТИФИКАЦИЯ)
             //then
-            wdb.GetLogin(E_Login.Text, E_Password.Text);
+            
+            if (wdb.GetLogin(E_Login.Text, E_Password.Text) != -1)
             if (wdb.ActivUser != 1)
             {
                 var UsersForm = new Users_Form(wdb);
@@ -60,6 +61,8 @@ namespace Kyrs
                 this.Visible = false;
                 AdminForm.ShowDialog();
             }
+            else 
+                MessageBox.Show("В базе нет такой пары логин/пароль!");
             //else
             //БРО_ЧТО_ТО_НЕ_ТО_ТЫ_ВВОДИШЬ!
         }
