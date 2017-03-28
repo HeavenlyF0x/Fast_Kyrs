@@ -1,0 +1,23 @@
+USE [HotelsDB]
+GO
+/****** Object:  StoredProcedure [dbo].[proc_Select_Free]    Script Date: 03/28/2017 12:30:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[proc_Select_Free]
+@id_hotel varchar(20),
+@data_in date,
+@data_out date
+AS
+/*SELECT * FROM Room
+WHERE Room.Id_Hotel = @id_hotel*/
+IF EXISTS (SELECT * FROM Reservation AS R
+WHERE R.Id_Hotel = @id_hotel)
+BEGIN 
+SELECT Room.Id_Hotel, Room.Id_Room, Room.Id_Class FROM Room
+WHERE NOT Room.Id_Room = ANY (SELECT Reservation.Id_Room FROM Reservation WHERE Reservation.Id_Hotel = @id_hotel)
+AND Room.Id_Hotel = @id_hotel
+END
+ELSE
+SELECT * FROM Room WHERE Room.Id_Hotel = @id_hotel

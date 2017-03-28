@@ -84,7 +84,7 @@ namespace Kyrs
 
         private void B_Reserv_Click(object sender, EventArgs e)
         {
-            wdb.AddReservation(Selected_Hotel, dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString(), wdb.ActivUser, dateTimePicker1.Value, dateTimePicker2.Value);
+            wdb.AddReservation(Selected_Hotel, dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString(), wdb.ActivUser, dateTimePicker1.Value, dateTimePicker2.Value);
             MessageBox.Show("Комната зарезервирована.");
             Selector = 0;
         }
