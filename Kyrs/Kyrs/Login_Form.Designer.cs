@@ -62,7 +62,7 @@
             this.E_Login.Name = "E_Login";
             this.E_Login.Size = new System.Drawing.Size(133, 20);
             this.E_Login.TabIndex = 2;
-            this.E_Login.Text = "admin";
+            this.E_Login.Text = "F0x";
             // 
             // E_Password
             // 
@@ -70,7 +70,7 @@
             this.E_Password.Name = "E_Password";
             this.E_Password.Size = new System.Drawing.Size(133, 20);
             this.E_Password.TabIndex = 3;
-            this.E_Password.Text = "admin";
+            this.E_Password.Text = "tpt";
             this.E_Password.UseSystemPasswordChar = true;
             // 
             // label2

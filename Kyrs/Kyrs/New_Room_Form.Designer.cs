@@ -107,6 +107,7 @@
             this.B_Clear.TabIndex = 7;
             this.B_Clear.Text = "Сброс";
             this.B_Clear.UseVisualStyleBackColor = true;
+            this.B_Clear.Click += new System.EventHandler(this.B_Clear_Click);
             // 
             // B_Cancle
             // 
@@ -116,6 +117,7 @@
             this.B_Cancle.TabIndex = 8;
             this.B_Cancle.Text = "Отмена";
             this.B_Cancle.UseVisualStyleBackColor = true;
+            this.B_Cancle.Click += new System.EventHandler(this.B_Cancle_Click);
             // 
             // New_Room_Form
             // 

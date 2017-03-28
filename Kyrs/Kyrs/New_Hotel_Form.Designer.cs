@@ -130,6 +130,7 @@
             this.B_Clear.TabIndex = 9;
             this.B_Clear.Text = "Сброс";
             this.B_Clear.UseVisualStyleBackColor = true;
+            this.B_Clear.Click += new System.EventHandler(this.B_Clear_Click);
             // 
             // B_Cancle
             // 

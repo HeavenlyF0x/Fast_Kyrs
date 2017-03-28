@@ -7,27 +7,6 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 
-#region button1
-/*
-            string sqlExpression = "add_info_in";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                // указываем, что команда представляет хранимую процедуру
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                // параметр для ввода имени
-                command.Parameters.AddWithValue("@string", textBox1.Text.ToString());
-                command.Parameters.AddWithValue("@number", int.Parse(textBox2.Text));
-                //command.Parameters.AddWithValue("@data)", textBox3.Text.ToString());
-                //var result = command.ExecuteScalar();
-                // если нам не надо возвращать id
-                var result = command.ExecuteNonQuery();
-                this.get_my_strings_slonTableAdapter.Fill(this.sQL_TestDataSet.get_my_strings_slon);
-            }
-            */
-#endregion
-
 
 public class DB_Work
 {
@@ -39,7 +18,7 @@ public class DB_Work
         connectionString = @"Data Source=TPUKCTEP; Initial Catalog=HotelsDB;Integrated Security=True";
     }
 
-    public int AddNewUser(String _login, String _pass, String _lastname, String _firstname, String _patronymic, String _number)             
+    public int AddNewUser(String _login, String _pass, String _lastname, String _firstname, String _patronymic, String _number)
     {
 
         String sqlExpression = "proc_Add_User";
@@ -167,7 +146,7 @@ public class DB_Work
         return info;
     }
 
-    public int AddReservation(String _idHotel, String _idRoom, int _idUser, String _dataIn, int _dayCount)
+    public int AddReservation(String _idHotel, String _idRoom, int _idUser, DateTime _dataIn, DateTime _dateOut)
     {
 
         String sqlExpression = "proc_Add_Reservation";
@@ -185,7 +164,7 @@ public class DB_Work
             command.Parameters.AddWithValue("@id_room", _idRoom);
             command.Parameters.AddWithValue("@id_user", _idUser);
             command.Parameters.AddWithValue("@data_in", _dataIn);
-            command.Parameters.AddWithValue("@day_count", _dayCount);
+            command.Parameters.AddWithValue("@data_out", _dateOut);
             var result = command.ExecuteNonQuery();
         }
         catch (Exception _ex)
@@ -455,7 +434,7 @@ public class DB_Work
         return dgv;
     }
 
-    public DataGridView FillFree(DataGridView _dgv, String _idHotel)
+    public DataGridView FillFree(DataGridView _dgv, String _idHotel, DateTime _dataIn, DateTime _dataOut)
     {
         DataGridView dgv = _dgv;
 
@@ -469,6 +448,8 @@ public class DB_Work
             SqlCommand command = new SqlCommand(sqlExpression, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@id_hotel", _idHotel);
+            command.Parameters.AddWithValue("@data_in", _dataIn);
+            command.Parameters.AddWithValue("@data_out", _dataOut);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataSet ds = new DataSet();
             adapter.Fill(ds);
@@ -484,7 +465,7 @@ public class DB_Work
         }
         return dgv;
     }
-    
+
     public DataGridView FillLog(DataGridView _dgv)
     {
         DataGridView dgv = _dgv;
@@ -513,4 +494,174 @@ public class DB_Work
         return dgv;
     }
 
+    public int DeleteMyReservation(int _idReservation)
+    {
+        String sqlExpression = "proc_DeleteMyResrv";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@id_reserv", _idReservation);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    public int ClearOldReservation()
+    {
+        String sqlExpression = "proc_Clear_Old_Reservations";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+            MessageBox.Show(ex.ToString());
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    public int DeleteHotel(String _idHotel)
+    {
+        String sqlExpression = "proc_Delete_Hotel";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idHotel", _idHotel);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    public int DeleteRoom(String _idHotel, String _idRoom)
+    {
+        String sqlExpression = "proc_Delete_Room";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idHotel", _idHotel);
+            command.Parameters.AddWithValue("@idRoom", _idRoom);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    public int DeleteRoomClass(String _idHotel, int _idClass)
+    {
+        String sqlExpression = "proc_Delete_Room_Class";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idHotel", _idHotel);
+            command.Parameters.AddWithValue("@idClass", _idClass);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    public int DeleteUser(int _idUser)
+    {
+        String sqlExpression = "proc_Delete_User";
+
+        int info = 0;
+
+        SqlConnection connection = new SqlConnection();
+        connection.ConnectionString = connectionString;
+        try
+        {
+            connection.Open();
+            SqlCommand command = new SqlCommand(sqlExpression, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idUser", _idUser);
+            var result = command.ExecuteNonQuery();
+        }
+        catch (Exception _ex)
+        {
+            ex = _ex;
+            info = -1;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return info;
+    }
+
+    
 }

@@ -41,6 +41,7 @@
             this.CB_SelectUser = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.B_UnLogin = new System.Windows.Forms.Button();
+            this.B_Delete_Info = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,16 +123,21 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(432, 355);
             this.dataGridView1.TabIndex = 1;
             // 
             // B_AddInfo
             // 
-            this.B_AddInfo.Location = new System.Drawing.Point(458, 37);
+            this.B_AddInfo.Location = new System.Drawing.Point(475, 28);
             this.B_AddInfo.Name = "B_AddInfo";
             this.B_AddInfo.Size = new System.Drawing.Size(75, 51);
             this.B_AddInfo.TabIndex = 2;
@@ -142,7 +148,7 @@
             // CB_SelectUser
             // 
             this.CB_SelectUser.FormattingEnabled = true;
-            this.CB_SelectUser.Location = new System.Drawing.Point(438, 94);
+            this.CB_SelectUser.Location = new System.Drawing.Point(438, 127);
             this.CB_SelectUser.Name = "CB_SelectUser";
             this.CB_SelectUser.Size = new System.Drawing.Size(121, 21);
             this.CB_SelectUser.TabIndex = 3;
@@ -152,7 +158,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(458, 134);
+            this.button1.Location = new System.Drawing.Point(475, 168);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -163,7 +169,7 @@
             // 
             // B_UnLogin
             // 
-            this.B_UnLogin.Location = new System.Drawing.Point(458, 276);
+            this.B_UnLogin.Location = new System.Drawing.Point(475, 345);
             this.B_UnLogin.Name = "B_UnLogin";
             this.B_UnLogin.Size = new System.Drawing.Size(75, 23);
             this.B_UnLogin.TabIndex = 5;
@@ -171,11 +177,23 @@
             this.B_UnLogin.UseVisualStyleBackColor = true;
             this.B_UnLogin.Click += new System.EventHandler(this.B_UnLogin_Click);
             // 
+            // B_Delete_Info
+            // 
+            this.B_Delete_Info.Location = new System.Drawing.Point(458, 274);
+            this.B_Delete_Info.Name = "B_Delete_Info";
+            this.B_Delete_Info.Size = new System.Drawing.Size(92, 48);
+            this.B_Delete_Info.TabIndex = 6;
+            this.B_Delete_Info.Text = "Удалить выбранынй элеменет";
+            this.B_Delete_Info.UseVisualStyleBackColor = true;
+            this.B_Delete_Info.Click += new System.EventHandler(this.B_Delete_Info_Click);
+            // 
             // Admin_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 380);
+            this.ControlBox = false;
+            this.Controls.Add(this.B_Delete_Info);
             this.Controls.Add(this.B_UnLogin);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.CB_SelectUser);
@@ -209,5 +227,6 @@
         private System.Windows.Forms.ComboBox CB_SelectUser;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button B_UnLogin;
+        private System.Windows.Forms.Button B_Delete_Info;
     }
 }

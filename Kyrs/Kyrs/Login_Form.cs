@@ -28,7 +28,8 @@ namespace Kyrs
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            wdb.ClearOldReservation();
+            this.Show();
         }
 
         private void B_CloseProgramm_Click(object sender, EventArgs e)

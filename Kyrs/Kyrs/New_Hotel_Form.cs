@@ -28,11 +28,20 @@ namespace Kyrs
         {
             //wdb.AddHotel(E_IdHotel.Text, E_Title.Text, E_Address.Text, int.Parse(N_StarCount.TextAlign.ToString()));
             wdb.AddHotel(E_IdHotel.Text, E_Title.Text, E_Address.Text, int.Parse(textBox1.Text));
+            this.Close();
         }
 
         private void B_Cancle_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void B_Clear_Click(object sender, EventArgs e)
+        {
+            E_Address.Text = "";
+            E_IdHotel.Text = "";
+            E_Title.Text = "";
+            textBox1.Text = "";
         }
     }
 }

@@ -79,12 +79,12 @@ namespace Kyrs
 
         private void CB_SelectUser_SelectedValueChanged(object sender, EventArgs e)
         {
-           // dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text));
+            // dataGridView1 = wdb.FillReservation(dataGridView1, int.Parse(CB_SelectUser.Text));
         }
 
         private void Admin_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // Application.Restart();
+            // Application.Restart();
         }
 
         private void BC_Log_Click(object sender, EventArgs e)
@@ -116,6 +116,38 @@ namespace Kyrs
         private void B_UnLogin_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void B_Delete_Info_Click(object sender, EventArgs e)
+        {
+            switch (Selector)
+            {
+                case 0:
+                    {
+                        if (wdb.DeleteHotel(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString()) == -1)
+                            MessageBox.Show("Этот элемент невозможно удалить, пока он используется");
+                        dataGridView1 = wdb.FillHotel(dataGridView1);
+                    } break;
+                case 1:
+                    {
+                        if (wdb.DeleteRoom(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString(), (dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString())) == -1)
+                            MessageBox.Show("Этот элемент невозможно удалить, пока он используется");
+                        dataGridView1 = wdb.FillRoom(dataGridView1);
+                    } break;
+                case 2:
+                    {
+                        if (wdb.DeleteRoomClass(dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString(), int.Parse(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString())) == -1)
+                            MessageBox.Show("Этот элемент невозможно удалить, пока он используется");
+                        dataGridView1 = wdb.FillRoomClasses(dataGridView1);
+                    } break;
+                case 3: { } break;
+                case 4:
+                    {
+                        if (wdb.DeleteUser(int.Parse(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString())) == -1)
+                            MessageBox.Show("Этот элемент невозможно удалить, пока он используется");
+                        dataGridView1 = wdb.FillLogins(dataGridView1);
+                    } break;
+            }
         }
     }
 }

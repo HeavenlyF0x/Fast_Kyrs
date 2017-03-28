@@ -180,6 +180,7 @@
             this.B_Empty.TabIndex = 15;
             this.B_Empty.Text = "Очистить поля";
             this.B_Empty.UseVisualStyleBackColor = true;
+            this.B_Empty.Click += new System.EventHandler(this.B_Empty_Click);
             // 
             // B_LoginForm
             // 
@@ -189,12 +190,14 @@
             this.B_LoginForm.TabIndex = 16;
             this.B_LoginForm.Text = "Вернуться назад";
             this.B_LoginForm.UseVisualStyleBackColor = true;
+            this.B_LoginForm.Click += new System.EventHandler(this.B_LoginForm_Click);
             // 
             // Registr_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 325);
+            this.ControlBox = false;
             this.Controls.Add(this.B_LoginForm);
             this.Controls.Add(this.B_Empty);
             this.Controls.Add(this.E_Number);

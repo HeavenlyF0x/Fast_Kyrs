@@ -29,6 +29,19 @@ namespace Kyrs
         private void B_Add_Click(object sender, EventArgs e)
         {
             wdb.AddRoom(CB_IdHotel.Text,E_IdRoom.Text,CB_IdHotel.SelectedIndex);
+            this.Close();
+        }
+
+        private void B_Clear_Click(object sender, EventArgs e)
+        {
+            CB_Class.SelectedIndex = 0;
+            E_IdRoom.Text = "";
+            CB_IdHotel.SelectedIndex = 0;
+        }
+
+        private void B_Cancle_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

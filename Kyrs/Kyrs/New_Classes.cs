@@ -23,11 +23,14 @@ namespace Kyrs
         private void button1_Click(object sender, EventArgs e)
         {
             wdb.AddClasses(CB_IdHotel.Text, E_Class.Text, int.Parse(E_Cost.Text));
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            CB_IdHotel.SelectedIndex = 0;
+            E_Class.Text = "";
+            E_Cost.Text = "";
         }
 
         private void button3_Click(object sender, EventArgs e)
